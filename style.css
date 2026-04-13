@@ -1,0 +1,204 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #fdfaf5;
+    color: #2d3436;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #0984e3;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+h1 { font-size: 3.5rem; margin-bottom: 0; }
+.tagline { color: #636e72; font-size: 1.2rem; margin-top: 10px; }
+
+hr {
+    width: 50px;
+    border: 2px solid #fab1a0;
+    margin: 40px auto;
+}
+
+.content-block {
+    padding: 60px 0;
+}
+
+/* Tableau Button Style */
+.tableau-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 15px 30px;
+    background-color: #e87653; /* Tableau-style Orange */
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.tableau-btn:hover {
+    background-color: #cf5d3a;
+}
+
+footer {
+    background-color: #f1f2f6;
+    padding: 40px;
+    color: #636e72;
+}
+
+/* This targets every image in your adventure stories */
+.story-image img {
+    display: block;       /* Allows centering with margin auto */
+    margin: 0 auto;       /* Centers the image horizontally */
+    width: 280px;         /* Smaller width */
+    height: 180px;        /* Smaller height */
+    object-fit: cover;    /* Crops the photo so it doesn't look squished */
+    border-radius: 8px;   /* Nice rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+/* Adjusts the space between the text and the small images */
+.adventure-story {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+}
+
+/* Keeps it looking good on phones */
+@media (max-width: 600px) {
+    .adventure-story {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Resume Page Specific Styles */
+.resume-item {
+    text-align: left; /* Keeps professional info left-aligned */
+    margin-bottom: 30px;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #2c3e50; /* Adds a nice professional accent bar */
+}
+
+.resume-item h3 {
+    margin: 0 0 5px 0;
+    color: #2c3e50;
+}
+
+.resume-item p {
+    margin: 5px 0;
+}
+
+/* Specialized styling for Sports Career images */
+.sport-image img {
+    display: block;
+    margin: 0 auto;       /* Centers the image in its column */
+    width: 280px;         /* Much smaller width */
+    height: 200px;        /* Consistent height for a "trading card" look */
+    object-fit: cover;    /* Keeps the action shot from looking squished */
+    border-radius: 4px;   /* Slight rounding for a clean finish */
+    border: 4px solid #2c3e50; /* Solid navy border for a bold sports feel */
+    box-shadow: 5px 5px 0px #d4af37; /* Gold offset shadow (BYU colors!) */
+    transition: transform 0.3s ease; /* Smooth animation for the hover below */
+}
+
+/* Adds a small interaction when you hover over a photo */
+.sport-image img:hover {
+    transform: scale(1.05); /* Slightly grows the image when hovered */
+    cursor: pointer;
+}
+
+/* Adjusts the spacing around the sport sections */
+.sport-block {
+    padding: 30px 0;
+    border-bottom: 1px solid #eee; /* Light divider between sports */
+}
+
+.sport-block:last-child {
+    border-bottom: none; /* Removes the line after the last sport */
+}
+
+/* Makes the YouTube video fit your page width */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px; /* Matches your neat photo corners! */
+}
+
+.nav-links li {
+    display: inline;
+    margin: 0 15px; /* Adjust this number to space them out more or less */
+}
+
+.game-nav {
+    padding: 30px 50px; /* Gives it some breathing room */
+    text-align: left;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #3498db; /* A nice blue to match your home links */
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.back-link:hover {
+    color: #2c3e50; /* Darkens when you hover */
+    transform: translateX(-5px); /* Subtle "bounce" effect to the left */
+}
+
+.arrow {
+    font-size: 1.5rem;
+}

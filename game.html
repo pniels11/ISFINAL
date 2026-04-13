@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sports Arcade | Parker Nielson</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #game-container { text-align: center; padding: 20px; background: #1a252f; color: white; border-radius: 20px; margin: 20px auto; max-width: 600px; }
+        canvas { background: #27ae60; border: 5px solid #fff; border-radius: 10px; cursor: none; display: block; margin: 0 auto; }
+        .score { font-size: 24px; font-family: 'Arial', sans-serif; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+    <div class="game-nav">
+        <a href="index.html" class="back-link">
+            <span class="arrow">←</span> GO BACK HOME
+        </a>
+    </div>
+</header>
+
+    <div id="game-container">
+        <h1>Dodgeball Football</h1>
+        <div class="score">Score: <span id="scoreVal">0</span></div>
+        <canvas id="gameCanvas" width="400" height="500"></canvas>
+        <p>Move your mouse to dodge the footballs!</p>
+        <button onclick="resetGame()" style="padding: 10px 20px; cursor: pointer;">Restart Game</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const scoreElement = document.getElementById("scoreVal");
+
+        let score = 0;
+        let gameOver = false;
+        let player = { x: 200, y: 450, size: 20 };
+        let enemies = [];
+
+        // Track Mouse
+        canvas.addEventListener("mousemove", (e) => {
+            const rect = canvas.getBoundingClientRect();
+            player.x = e.clientX - rect.left;
+        });
+
+        function spawnEnemy() {
+            if (!gameOver) {
+                enemies.push({ x: Math.random() * canvas.width, y: -20, speed: 3 + Math.random() * 4 });
+                setTimeout(spawnEnemy, 600);
+            }
+        }
+
+        function update() {
+            if (gameOver) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw Player (The Jersey)
+            ctx.fillStyle = "#d4af37"; // Gold
+            ctx.fillRect(player.x - player.size/2, player.y, player.size, player.size);
+
+            // Update & Draw Enemies (The Balls)
+            enemies.forEach((enemy, index) => {
+                enemy.y += enemy.speed;
+                ctx.fillStyle = "#8B4513"; // Brown (Football color)
+                ctx.beginPath();
+                ctx.ellipse(enemy.x, enemy.y, 10, 15, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Collision Detection
+                if (enemy.y > player.y && enemy.y < player.y + player.size &&
+                    enemy.x > player.x - player.size/2 && enemy.x < player.x + player.size/2) {
+                    gameOver = true;
+                    alert("Game Over! Final Score: " + score);
+                }
+
+                // Increase Score
+                if (enemy.y > canvas.height) {
+                    enemies.splice(index, 1);
+                    score++;
+                    scoreElement.innerText = score;
+                }
+            });
+
+            requestAnimationFrame(update);
+        }
+
+        function resetGame() {
+            score = 0;
+            scoreElement.innerText = 0;
+            enemies = [];
+            gameOver = false;
+            update();
+            spawnEnemy();
+        }
+
+        spawnEnemy();
+        update();
+    </script>
+</body>
+</html>
